@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AshBlogs - sign in</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            font-size: 30px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form method="POST" name="form1" onsubmit="return(val())">
+            <label>Full Name: </label>
+            <input type="text" name="FName" placeholder="Enter your name here">
+            <span style="color: red;" id="s1"></span>
+            <br/>
+            <label>Email: </label>
+            <input type="email" name="email" placeholder="Eg:- Example@gmail.com">
+            <span style="color: red;" id="s2"></span>
+            <br/>
+            <label>Mobile Number: </label>
+            <input type="tel" name="MOB" placeholder="Eg:- 1234567890">
+            <span id="s3" style="color: red;"></span>
+            <br/>
+            <label>Date of Birth</label>
+            <input type="date" name="DOB" placeholder="Eg:- dd/mm/yyyy">
+            <span id="s4" style="color: red;"></span>
+            <br/>
+            <label>Gender: </label>
+            <input type="radio" name="GEN" id="Male">Male
+            <input type="radio" name="GEN" id="Female">Female
+            <input type="radio" name="GEN" id="Others">Others
+            <span id="s5" style="color: red;"></span>
+            <br/>
+            <label>Username: </label>
+            <input type="text" name="Uname" placeholder="Enter your username">
+            <span id="s6" style="color: red;"></span>
+            <br/>
+            <label>Password: </label>
+            <input type="password" name="PWD" placeholder="Write your Password">
+            <span id="s7" style="color: red;">Make sure it is secure</span>
+            <br/>
+            <label>Confirm Password: </label>
+            <input type="password" name="CPWD" placeholder="Write your Password again to confirm">
+            <span id="s7" style="color: red;"></span>
+            <br/>
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear">
+        </form>
+    </div>
+    <script>
+        function val()
+        {
+            //City: Ajman                             document
+            //Area name: Rashidiya                    form1
+            //Building name: Ramada Hotel & Suites    FName
+            var n=document.form1.FName.value;
+            if(n=="")
+            {
+                document.getElementById("s1").innerHTML="*Please Enter your name";
+                document.form1.FName.focus();
+                return false;
+            }
+            else{
+              document.getElementById("s1").innerHTML="";
+            }
+            
+            var e=document.form1.email.value;
+            if(e=="")
+            {
+                document.getElementById("s2").innerHTML="*Please Enter your E-mail Address";
+                document.form1.email.focus();
+                return false;
+            }
+            else{
+              document.getElementById("s2").innerHTML="";
+            }
+
+            var mob=document.form1.MOB.value;
+            if (mob=="") {
+                document.getElementById("s3").innerHTML="*Please Enter your mobile number"
+                document.form1.MOB.focus();
+                return false;
+            }
+            else if (isNaN(mob)) {
+                document.getElementById("s3").innerHTML="*Please Enter your mobile number. they need to be numbers"
+                document.form1.MOB.focus();
+                return false;
+            }
+            else if (mob.length != 10)//! is called NOT.
+            {
+                document.getElementById("s3").innerHTML="*Your Mobile number should be of 10 numbers."
+                document.form1.MOB.focus();
+                return false;
+            }
+            else{
+                document.getElementById("s3").innerHTML=""
+            }
+
+            var dob=document.form1.DOB.value;
+            if (dob=="") {
+                document.getElementById("s4").innerHTML="*Please write your Date Of Birth"
+                document.form1.DOB.focus();
+                return false;
+            }
+            else {
+                document.getElementById("s4").innerHTML=""
+            }
+
+            if (document.getElementById("Male").checked===true) {
+                document.getElementById("s5").innerHTML=""
+            }
+            else if (document.getElementById("Female").checked===true) {
+                document.getElementById("s5").innerHTML=""
+            }
+            else if (document.getElementById("Others").checked===true) {
+                document.getElementById("s5").innerHTML=""
+            }
+            else {
+                document.getElementById("s5").innerHTML="*Please say your gender"
+                return false;
+            }
+            var U=document.form1.Uname.value;
+
+            if (U=="") {
+                document.getElementById("s6").innerHTML="*Please enter your username"
+                document.form1.Uname.focus();
+                return false;
+            } else {
+                document.getElementById("s6").innerHTML=""
+            }
+
+            var p=document.form1.PWD.value;
+
+            if (p=="") {
+                document.getElementById("s7").innerHTML="*Please write your password"
+                document.form1.PWD.focus();
+                return false;
+            }else if (p.length<8) {
+                document.getElementById("s7").innerHTML="*Your password should have atleast 8 characters"
+                document.form1.PWD.focus();
+                return false;
+            } else {
+                document.getElementById("s7").innerHTML=""
+            }
+
+            var cp=document.form1.CPWD.value;
+            if(cp=="")
+            {
+                document.getElementById("s8").innerHTML="Confirm Password cannot be empty";
+                document.form1.PWD.focus();
+                return false;
+            }
+            else if(cp!=p)
+            {
+                document.getElementById("s8").innerHTML="Password and confirm password is not matching";
+                document.form1.PWD.focus();
+                return false;
+            }
+            
+else{
+              document.getElementById("s8").innerHTML="";
+            }
+        }
+    </script>
+</body>
+</html>
